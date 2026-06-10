@@ -1,0 +1,395 @@
+/* ========== RESET E VARIÁVEIS ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s, transform 0.1s;
+}
+
+:root {
+    --bg-body: #f4f7e6;
+    --bg-card: #ffffff;
+    --text-primary: #2c3e2f;
+    --text-secondary: #4a6741;
+    --accent: #6b8c5c;
+    --accent-hover: #527a43;
+    --border: #cbd9b7;
+    --progress: #8bc34a;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --correct: #4caf50;
+    --wrong: #f44336;
+}
+
+body.dark-mode {
+    --bg-body: #1a2a1f;
+    --bg-card: #2c3e2a;
+    --text-primary: #e8f0e2;
+    --text-secondary: #cfe2c0;
+    --accent: #9ccc65;
+    --accent-hover: #7cb342;
+    --border: #4a6741;
+    --shadow: rgba(0, 0, 0, 0.4);
+    --correct: #81c784;
+    --wrong: #e57373;
+}
+
+body {
+    background-color: var(--bg-body);
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========== BOTÕES FLUTUANTES ========== */
+.floating-buttons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    z-index: 100;
+}
+
+.floating-buttons button {
+    background-color: var(--bg-card);
+    border: 2px solid var(--accent);
+    color: var(--text-primary);
+    padding: 8px 14px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 2px 5px var(--shadow);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.floating-buttons button:hover {
+    background-color: var(--accent);
+    color: white;
+    transform: scale(1.02);
+}
+
+/* ========== SPLASH ========== */
+.splash-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+}
+
+.splash-card {
+    background: var(--bg-card);
+    max-width: 550px;
+    width: 90%;
+    padding: 2rem;
+    border-radius: 48px;
+    text-align: center;
+    box-shadow: 0 20px 30px var(--shadow);
+    border: 1px solid var(--accent);
+    animation: fadeInUp 0.5s ease;
+}
+
+.logo-agrinho {
+    width: 80px;
+    height: 80px;
+    background: repeating-linear-gradient(45deg, #6b8c5c, #6b8c5c 15px, #8bc34a 15px, #8bc34a 30px);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    border: 3px solid var(--accent-hover);
+    box-shadow: 0 0 0 4px var(--bg-body);
+}
+
+.splash-card h1 {
+    font-size: 2.2rem;
+    color: var(--accent);
+}
+
+.splash-sub {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.splash-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: scale(1.02);
+}
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--accent);
+    color: var(--text-primary);
+}
+.btn-secondary:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* ========== QUIZ ========== */
+.quiz-container {
+    max-width: 800px;
+    width: 100%;
+    background: var(--bg-card);
+    border-radius: 48px;
+    padding: 2rem;
+    box-shadow: 0 15px 30px var(--shadow);
+    margin: 70px 20px 30px;
+    border: 1px solid var(--border);
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 15px;
+}
+
+.score-area {
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: var(--bg-body);
+    padding: 6px 16px;
+    border-radius: 40px;
+}
+
+.progress-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.question-counter {
+    font-weight: bold;
+    background: var(--accent);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+}
+
+.progress-bar-container {
+    flex: 1;
+    background-color: var(--border);
+    border-radius: 20px;
+    height: 12px;
+}
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--progress);
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+.question-text {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 25px 0 20px;
+    text-align: center;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 20px 0;
+}
+
+.option-btn {
+    background-color: var(--bg-body);
+    border: 2px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 60px;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: var(--accent);
+    color: white;
+    transform: translateX(8px);
+}
+
+.option-btn.correct-highlight {
+    background-color: var(--correct);
+    border-color: var(--correct);
+    color: white;
+}
+
+.option-btn.wrong-highlight {
+    background-color: var(--wrong);
+    border-color: var(--wrong);
+    color: white;
+}
+
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.feedback-message {
+    text-align: center;
+    padding: 12px;
+    border-radius: 40px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.dica-message {
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    background: var(--accent);
+    color: white;
+    border-radius: 30px;
+    animation: fadeIn 0.3s;
+}
+
+.result-area {
+    text-align: center;
+    background: var(--bg-body);
+    border-radius: 40px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 300;
+}
+.modal-content {
+    background: var(--bg-card);
+    max-width: 550px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 2rem;
+    border-radius: 32px;
+    position: relative;
+    border-top: 8px solid var(--accent);
+}
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+.modal-content ul {
+    margin: 15px 0 0 25px;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 700px) {
+    .quiz-container {
+        padding: 1.2rem;
+        margin-top: 90px;
+    }
+    .question-text {
+        font-size: 1.3rem;
+    }
+    .floating-buttons {
+        top: 10px;
+        right: 10px;
+        gap: 6px;
+    }
+    .floating-buttons button {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+    .splash-card h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .options-container button {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    .quiz-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+/* ========== ANIMAÇÕES ========== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Agrinho - Saberes Sustentáveis | Quiz Interativo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Botões flutuantes de controle -->
+    <div class="floating-buttons">
+        <button id="restartBtn" aria-label="Reiniciar quiz">⟳ Reiniciar</button>
+        <button id="darkModeBtn" aria-label="Modo escuro" class="dark-mode-btn">🌙 Escuro</button>
+        <button id="instructionsBtn" aria-label="Instruções">❔ Instruções</button>
+        <button id="tipBtn" aria-label="Dica sustentável">💡 Dica</button>
+    </div>
+
+    <!-- TELA DE ABERTURA (Splash) -->
+    <div id="splashScreen" class="splash-container">
+        <div class="splash-card">
+            <div class="logo-agrinho"></div>
+            <h1>🌾 Agrinho 🌱</h1>
+            <p class="splash-sub">Cultivando Saberes Sustentáveis</p>
+            <p>Teste seus conhecimentos em práticas agrícolas sustentáveis e torne-se um guardião da terra!</p>
+            <div class="splash-buttons">
+                <button id="startQuizBtn" class="btn-primary">🌿 Iniciar Jornada</button>
+                <button id="skipSplashBtn" class="btn-secondary">⏩ Pular Abertura</button>
+            </div>
+            <small class="splash-credit">Design autoral com CSS puro | Tema Agrinho</small>
+        </div>
+    </div>
+
+    <!-- ÁREA PRINCIPAL DO QUIZ -->
+    <main id="quizContainer" class="quiz-container hidden">
+        <header class="quiz-header">
+            <h2>🌍 Agricultura Sustentável</h2>
+            <div class="score-area">
+                <span>🏆 Pontuação: </span>
+                <span id="pontuacaoDisplay">0</span>
+                <span> / <span id="totalPerguntas">0</span></span>
+            </div>
+        </header>
+
+        <div class="progress-info">
+            <div class="question-counter">
+                <span id="perguntaAtualNumero">1</span> / <span id="totalPerguntasNum">0</span>
+            </div>
+            <div class="progress-bar-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+        </div>
+
+        <section class="question-area" id="questionArea">
+            <p id="perguntaTexto" class="question-text">Carregando pergunta...</p>
+            <div id="opcoesContainer" class="options-container"></div>
+            <div id="feedbackMsg" class="feedback-message"></div>
+            <div id="dicaMsg" class="dica-message hidden"></div>
+        </section>
+
+        <div id="resultadoFinal" class="result-area hidden">
+            <h3>✅ Resultado Final</h3>
+            <p id="resultadoPontos"></p>
+            <p id="mensagemSustentavel"></p>
+            <button id="restartFromResultBtn" class="btn-primary">🌱 Tentar Novamente</button>
+        </div>
+    </main>
+
+    <!-- MODAL DE INSTRUÇÕES -->
+    <div id="instructionsModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>📖 Instruções de Uso</h3>
+            <p><strong>Objetivo:</strong> Responder corretamente às perguntas sobre práticas agrícolas sustentáveis. Cada acerto vale 1 ponto.</p>
+            <p><strong>Como jogar:</strong></p>
+            <ul>
+                <li>Clique na opção que você julga correta.</li>
+                <li>Após escolher, a opção ficará destacada (verde/vermelho) e o feedback aparecerá.</li>
+                <li>O quiz avança automaticamente após 0,8 segundo.</li>
+                <li>Use <strong>⟳ Reiniciar</strong> a qualquer momento.</li>
+                <li><strong>🌙 Escuro</strong> alterna o tema.</li>
+                <li><strong>💡 Dica</strong> mostra uma curiosidade sustentável (não interfere na pontuação).</li>
+                <li>Na tela inicial, "Pular Abertura" vai direto ao quiz.</li>
+            </ul>
+            <p><strong>Recursos extras:</strong> Modo escuro, reinício rápido, dicas, barra de progresso, contador de perguntas e feedback visual nas opções.</p>
+            <p><strong>Tecnologias:</strong> HTML5 semântico, CSS3 (Flexbox, Grid, Media Queries), JavaScript puro.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>🌿 Projeto autoral - Tema Agrinho | Conteúdo e design produzidos com CSS personalizado e JavaScript educacional.</p>
+    </footer>
+</body>
+</html>
